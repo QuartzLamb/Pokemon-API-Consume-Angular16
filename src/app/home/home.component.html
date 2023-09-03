@@ -1,1 +1,83 @@
-<p>home works!</p>
+<div>
+  <h2>Data API demo</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="clickable text-center" *ngFor="let item of pokemons | paginate: { itemsPerPage: 10, currentPage: p }">
+        <th scope="row">{{1}}</th>
+        <td>{{ item.name}}</td>
+        <td>
+          <button (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal"
+            data-bs-target="#pokemonModal" class="btn btn-primary">Ver</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+  <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Nombre: {{pokemonData.name}}</p>
+          <p>Experiencia: {{pokemonData.base_experience}}</p>
+          <p>Altura: {{pokemonData.height}}</p>
+          <p>Peso: {{pokemonData.weight}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!---<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>-->
+
+
+
+
+
+
+
+
+
+
+
+</div>
