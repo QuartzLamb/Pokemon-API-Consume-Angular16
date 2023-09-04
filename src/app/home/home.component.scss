@@ -1,4 +1,160 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+div.container {
+  width: 80%;
+  height: 100%;
+  padding-top: 2%;
+}
+
+div.titleContainer {
+  display: table;
+  width: 100%;
+  margin-bottom: 2%;
+  flex-direction: row;
+  display: flex;
+}
+
+div.titleTextContainer {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  float: left;
+}
+
+h2.title {
+  font-weight: bold;
+}
+
+div.inputContainer {
+  width: 50%;
+  float: right;
+}
+
+i.iconFilter {
+  font-size: 1.5vw;
+}
+
 table {
-    width: 100%;
-    height: 50%;
-  }
+  width: 100%;
+  height: 60%;
+}
+
+th.centerHead,
+th.leftBorderHead,
+th.rightBorderHead {
+  color: white;
+  background: #6122AC;
+  border-bottom: 2px solid white;
+  vertical-align: middle;
+  width: fit-content;
+}
+
+th.leftBorderHead {
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+th.centerHead {
+  width: 50%;
+}
+
+th.rightBorderHead {
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+th.numberColumn {
+  vertical-align: middle;
+}
+
+td {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: #6122AC;
+}
+
+pagination-controls.pagination {
+  background-color: #6122AC;
+  border-radius: 1em;
+  width: fit-content;
+  padding-top: 1%;
+  padding-right: 1%;
+  color: white;
+}
+
+div.upperContainerModal {
+  width: 100%;
+  height: 10%;
+}
+
+div.carousel {
+  height: 20%;
+  width: 80%;
+  margin-left: 10%;
+  background-color: green;
+  background-size: cover;
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/957/704/964/pokemon-fields-ruby-1920x1200-nature-fields-hd-art-wallpaper-preview.jpg');
+}
+
+div.itemCarousel{
+  width: 100%;
+  height: 100%;
+}
+
+div.innerCarouselContainer {
+  border-top: 10px;
+  border-left: 10px;
+  border-right: 10px;
+  border-bottom: 00px;
+  border-color: #000;
+  border-style: solid;
+  height: 350px;
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+div.imageProfileContainer {
+  border-radius: 5em;
+  height: 7vw;
+  width: 7vw;
+  background-color: gray;
+  border-width: 1;
+  border-color: black;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  position: absolute;
+  margin-left: 45%;
+}
+
+div.middleContainerModal {
+  width: 100%;
+  height: 50%;
+  background-color: red;
+}
+
+h1.tittleModal {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

@@ -1,83 +1,142 @@
-<div>
-  <h2>Data API demo</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-  <table class="table table-striped">
-    <thead>
-      <tr class="text-center">
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="clickable text-center" *ngFor="let item of pokemons | paginate: { itemsPerPage: 10, currentPage: p }">
-        <th scope="row">{{1}}</th>
-        <td>{{ item.name}}</td>
-        <td>
-          <button (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal"
-            data-bs-target="#pokemonModal" class="btn btn-primary">Ver</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Título</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
 
-  <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Nombre: {{pokemonData.name}}</p>
-          <p>Experiencia: {{pokemonData.base_experience}}</p>
-          <p>Altura: {{pokemonData.height}}</p>
-          <p>Peso: {{pokemonData.weight}}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+<body>
+  <div class="container">
+    <div class="titleContainer">
+      <div class="titleTextContainer">
+        <h2 class="title">Pokedex</h2>
+      </div>
+      <div class="input-group inputContainer">
+        <span class="input-group-text">
+          <i class="bi bi-filter iconFilter"></i>
+        </span>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+          <label for="floatingInputGroup1">Filtrar por nombre</label>
         </div>
       </div>
     </div>
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th scope="col" class="leftBorderHead">#</th>
+          <th scope="col" class="centerHead" sortable="name" (sort)="sortByName($event)">Nombre</th>
+          <th scope="col" class="rightBorderHead">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="clickable text-center"
+          *ngFor="let i = index; let item of pokemons | paginate: { itemsPerPage: itemsPerPage, currentPage: p}">
+          <th class="numberColumn" scope="row">{{(p - 1) * itemsPerPage + i + 1}}</th>
+          <td>{{ item.name}}</td>
+          <td>
+            <a href="" (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal"
+              data-bs-target="#pokemonModal">Ver</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+
+    <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg ">
+        <div class="modal-content modalContainer">
+          <div class="modal-body ">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            <div class="upperContainerModal">
+              <div id="carouselExampleIndicators" class="carousel carousel-dark slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                    aria-label="Slide 5"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                    aria-label="Slide 6"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
+                    aria-label="Slide 7"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
+                    aria-label="Slide 8"></button>
+                </div>
+                <div class="carousel-inner innerCarouselContainer">
+                  <div class="carousel-item active itemCarousel" *ngIf="sprites.front_default != null">
+                    <img src="{{sprites.front_default}}" class="d-block" alt="imag5">
+                    <p>{{sprites.front_default}}</p>
+                  </div>
+                  <div class="carousel-item itemCarousel" *ngIf="sprites.back_default != null">
+                    <img src="{{sprites.back_default}}" class="d-block" alt="...">
+                    <p>{{sprites.back_default}}</p>
+                  </div>
+                  <div class="carousel-item itemCarousel" *ngIf="sprites.back_female != null">
+                    <img src="{{sprites.back_female}}" class="d-block" alt="imag2">
+                    <p>{{sprites.back_female}}</p>
+                  </div>
+                  <div class="carousel-item itemCarousel" *ngIf="sprites.back_shiny != null">
+                    <img src="{{sprites.back_shiny}}" class="d-block" alt="imag3">
+                    <p>{{sprites.back_shiny}}</p>
+                  </div>
+                  <div class="carousel-item itemCarousel" *ngIf="sprites.back_shiny_female != null">
+                    <img src="{{sprites.back_shiny_female}}" class="d-block" alt="imag4">
+                    <p>{{sprites.back_shiny_female}}</p>
+                  </div>
+                  <div class="carousel-item itemCarousel" *ngIf="sprites.front_female != null">
+                    <img src="{{sprites.front_female}}" class="d-block" alt="imag6">
+                    <p>{{sprites.front_female}}</p>
+                  </div>
+                  <div class="carousel-item itemCarousel" *ngIf="sprites.front_shiny != null">
+                    <img src="{{sprites.front_shiny}}" class="d-block" alt="imag7">
+                    <p>{{sprites.front_shiny}}</p>
+                  </div>
+                  <div class="carousel-item itemCarousel" *ngIf="sprites.front_shiny_female != null">
+                    <img src="{{sprites.front_shiny_female}}" class="d-block" alt="imag8">
+                    <p>{{sprites.front_shiny_female}}</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon caruselBackButton" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden caruselNextButton">Next</span>
+                </button>
+              </div>
+              <!-- <img class="portraitImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"> -->
+            </div>
+            <div class="middleContainerModal">
+              <p>Nombre: {{pokemonData.name}}</p>
+              <p>Experiencia: {{pokemonData.base_experience}}</p>
+              <p>Altura: {{pokemonData.height}}</p>
+              <p>Peso: {{pokemonData.weight}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
-
-  <!---<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-      
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef> Weight </th>
-          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>-->
-
-
-
-
-
-
-
-
-
-
-
-</div>
+</html>
