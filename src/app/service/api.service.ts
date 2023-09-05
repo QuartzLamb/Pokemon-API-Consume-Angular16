@@ -19,4 +19,8 @@ export class ApiService {
     return this.http.get<any>("https://pokeapi.co/api/v2/pokemon/"+pokemonName);
   }
 
+  public getLocationAreaEncounters(pokemonName: string){
+    return this.http.get<any>("https://pokeapi.co/api/v2/pokemon/"+ pokemonName +"/encounters");
+  }
+
 }

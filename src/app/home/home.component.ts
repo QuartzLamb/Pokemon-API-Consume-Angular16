@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { MatTableModule } from '@angular/material/table';
 
+interface Ability {
+  name: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+
+
+
 export class HomeComponent implements OnInit {
 
   pokemons: any = {};
@@ -50,9 +57,23 @@ export class HomeComponent implements OnInit {
     weight: ","
    };
 
-   pokemonAbilities: [] = [];
+   pokemonAbilities = [
+    {
+      ability: {
+        name: ""
+      }
+    }
+   ];
 
-  constructor(private apiService: ApiService) { }
+   pokemonLocationAreaEncounters = [
+    {
+      location_area: {
+        name: ""
+      }
+    }
+   ];
+
+  constructor(private apiService: ApiService) {}
 
   //Función que se ejecuta al renderizar la página
   ngOnInit(): void {
@@ -70,6 +91,7 @@ export class HomeComponent implements OnInit {
       console.log(data);
     })
   }
+  
 
   showPokemon(event: any, pokemonName: string) {
     console.log(event.target.id);
@@ -77,8 +99,14 @@ export class HomeComponent implements OnInit {
     this.apiService.getPokemon(pokemonName).subscribe(data => {
       this.pokemonData = data;
       this.sprites = data.sprites;
+      this.pokemonAbilities = data.abilities;
       console.log(this.pokemonData);
-      console.log(this.sprites);
+      console.log(this.pokemonAbilities);
+      console.log(this.pokemonAbilities[0])
+    });
+
+    this.apiService.getLocationAreaEncounters(pokemonName).subscribe(data => {
+      this.pokemonLocationAreaEncounters = data;
     });
 
   }

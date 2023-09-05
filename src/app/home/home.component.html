@@ -13,15 +13,15 @@
   <div class="container">
     <div class="titleContainer">
       <div class="titleTextContainer">
-        <h2 class="title">Pokedex</h2>
+        <img class="titleImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png">
       </div>
       <div class="input-group inputContainer">
-        <span class="input-group-text">
+        <span class="input-group-text iconFilterContainer" >
           <i class="bi bi-filter iconFilter"></i>
         </span>
         <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
-          <label for="floatingInputGroup1">Filtrar por nombre</label>
+          <input type="text" class="form-control border border-primary" id="floatingInputGroup1" placeholder="Username">
+          <label for="floatingInputGroup1" class="inputLabel">Filter by pokemon name</label>
         </div>
       </div>
     </div>
@@ -29,8 +29,8 @@
       <thead>
         <tr class="text-center">
           <th scope="col" class="leftBorderHead">#</th>
-          <th scope="col" class="centerHead" sortable="name" (sort)="sortByName($event)">Nombre</th>
-          <th scope="col" class="rightBorderHead">Acción</th>
+          <th scope="col" class="centerHead" sortable="name" (sort)="sortByName($event)">Pokemon name</th>
+          <th scope="col" class="rightBorderHead">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -40,7 +40,7 @@
           <td>{{ item.name}}</td>
           <td>
             <a href="" (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal"
-              data-bs-target="#pokemonModal">Ver</a>
+              data-bs-target="#pokemonModal">Open</a>
           </td>
         </tr>
       </tbody>
@@ -51,59 +51,44 @@
       <div class="modal-dialog modal-lg ">
         <div class="modal-content modalContainer">
           <div class="modal-body ">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
+            <button type="button" class="btn-close closeModalButton" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+            <div class="topContainer">
+              <label class="cardTitle">{{pokemonData.name}}</label>
+            </div>
             <div class="upperContainerModal">
               <div id="carouselExampleIndicators" class="carousel carousel-dark slide">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                    aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                    aria-label="Slide 5"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
-                    aria-label="Slide 6"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
-                    aria-label="Slide 7"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
-                    aria-label="Slide 8"></button>
-                </div>
                 <div class="carousel-inner innerCarouselContainer">
                   <div class="carousel-item active itemCarousel" *ngIf="sprites.front_default != null">
-                    <img src="{{sprites.front_default}}" class="d-block" alt="imag5">
+                    <img src="{{sprites.front_default}}" class="d-block" alt="Loading...">
                     <p>{{sprites.front_default}}</p>
                   </div>
                   <div class="carousel-item itemCarousel" *ngIf="sprites.back_default != null">
-                    <img src="{{sprites.back_default}}" class="d-block" alt="...">
+                    <img src="{{sprites.back_default}}" class="d-block" alt="Loading...">
                     <p>{{sprites.back_default}}</p>
                   </div>
                   <div class="carousel-item itemCarousel" *ngIf="sprites.back_female != null">
-                    <img src="{{sprites.back_female}}" class="d-block" alt="imag2">
+                    <img src="{{sprites.back_female}}" class="d-block" alt="Loading...">
                     <p>{{sprites.back_female}}</p>
                   </div>
                   <div class="carousel-item itemCarousel" *ngIf="sprites.back_shiny != null">
-                    <img src="{{sprites.back_shiny}}" class="d-block" alt="imag3">
+                    <img src="{{sprites.back_shiny}}" class="d-block" alt="Loading...">
                     <p>{{sprites.back_shiny}}</p>
                   </div>
                   <div class="carousel-item itemCarousel" *ngIf="sprites.back_shiny_female != null">
-                    <img src="{{sprites.back_shiny_female}}" class="d-block" alt="imag4">
+                    <img src="{{sprites.back_shiny_female}}" class="d-block" alt="Loading...">
                     <p>{{sprites.back_shiny_female}}</p>
                   </div>
                   <div class="carousel-item itemCarousel" *ngIf="sprites.front_female != null">
-                    <img src="{{sprites.front_female}}" class="d-block" alt="imag6">
+                    <img src="{{sprites.front_female}}" class="d-block" alt="Loading...">
                     <p>{{sprites.front_female}}</p>
                   </div>
                   <div class="carousel-item itemCarousel" *ngIf="sprites.front_shiny != null">
-                    <img src="{{sprites.front_shiny}}" class="d-block" alt="imag7">
+                    <img src="{{sprites.front_shiny}}" class="d-block" alt="Loading...">
                     <p>{{sprites.front_shiny}}</p>
                   </div>
                   <div class="carousel-item itemCarousel" *ngIf="sprites.front_shiny_female != null">
-                    <img src="{{sprites.front_shiny_female}}" class="d-block" alt="imag8">
+                    <img src="{{sprites.front_shiny_female}}" class="d-block" alt="Loading...">
                     <p>{{sprites.front_shiny_female}}</p>
                   </div>
                 </div>
@@ -118,18 +103,68 @@
                   <span class="visually-hidden caruselNextButton">Next</span>
                 </button>
               </div>
+              <div class="featuresContainer">
+                <div class="featureContainer">
+                  <div class="column1Feature">
+                    <i class="bi bi-rulers iconExp"></i>
+                  </div>
+                  <div class="column2Feature">
+                    <div class="featureLabelContainer2">
+                      <label class="featuresLabel">Height:</label>
+                    </div>
+                    <div class="featureLabelContainer2">
+                      <label class="featuresLabel1">{{pokemonData.height}} m</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="featureContainer">
+                  <div class="column1Feature">
+                    <i class="bi bi-calendar2-minus-fill iconExp"></i>
+                  </div>
+                  <div class="column2Feature">
+                    <div class="featureLabelContainer2">
+                      <label class="featuresLabel">Weight:</label>
+                    </div>
+                    <div class="featureLabelContainer2">
+                      <label class="featuresLabel1">{{pokemonData.weight}} kg</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="featureContainer">
+                  <div class="column1Feature">
+                    <i class="bi bi-lightbulb-fill iconExp iconExp"></i>
+                  </div>
+                  <div class="column2Feature">
+                    <div class="featureLabelContainer2">
+                      <label class="featuresLabel">Experience:</label>
+                    </div>
+                    <div class="featureLabelContainer2">
+                      <label class="featuresLabel1">{{pokemonData.base_experience}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <!-- <img class="portraitImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"> -->
             </div>
             <div class="middleContainerModal">
-              <p>Nombre: {{pokemonData.name}}</p>
-              <p>Experiencia: {{pokemonData.base_experience}}</p>
-              <p>Altura: {{pokemonData.height}}</p>
-              <p>Peso: {{pokemonData.weight}}</p>
+              <label class="abilityTitleLabel">Abilities</label>
+              <div class="abilitiesContainer">
+                <div class="abilityNameContainer" *ngFor="let item of pokemonAbilities">
+                  <label class="abilityLabel">{{item.ability.name}} </label>
+                </div>
+              </div>
+              <label class="abilityTitleLabel">Locations</label>
+              <div class="locationsContainer">
+                <label *ngIf="pokemonLocationAreaEncounters.length === 0">Locations not found</label>
+                <div class="locationsListContainer">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let item of pokemonLocationAreaEncounters">
+                      <label>{{item.location_area.name}}</label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
