@@ -30,7 +30,7 @@ div.titleTextContainer {
   float: left;
 }
 
-img.titleImage{
+img.titleImage {
   width: 100%;
   height: 200%;
   object-fit: contain;
@@ -42,30 +42,47 @@ h2.title {
 
 div.inputContainer {
   width: 50%;
+  height: 100%;
   float: right;
 }
 
-div.inputInnerContainer{
+
+
+div.inputInnerContainer {
   border-color: #00296b;
 }
 
-input:focus + label {
+input:focus+label {
   color: #00296b;
 }
 
 i {
-  font-size: 1.5vw;
+  font-size: 1vw;
 }
 
-span.iconFilterContainer{
+span.iconFilterContainer {
   background-color: #4361ee;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: #4361ee;
 }
 
-i.iconFilter{
+i {
+  font-size: 29px;
+}
+
+i.iconFilter {
   color: #ffd500;
 }
 
-i.iconExp{
+i.iconOpen {
+  color: #f18805;
+}
+
+i.iconExp {
   color: #f18805;
 }
 
@@ -127,11 +144,11 @@ pagination-controls.pagination {
   font-weight: bold;
 }
 
-div.modalContainer{
+div.modalContainer {
   background-color: #e3e3e3;
 }
 
-button.closeModalButton{
+button.closeModalButton {
   float: right;
 }
 
@@ -170,6 +187,7 @@ div.carousel {
   background-color: #4361ee;
   background-size: cover;
   background-image: url('https://c4.wallpaperflare.com/wallpaper/957/704/964/pokemon-fields-ruby-1920x1200-nature-fields-hd-art-wallpaper-preview.jpg');
+  border-radius: 1em;
 }
 
 div.itemCarousel {
@@ -190,10 +208,31 @@ div.innerCarouselContainer {
   width: 100%;
 }
 
+
 img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+div.featureContainerExp{
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 1%;
+  margin-bottom: 2%;
+  border-radius: 1em;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-bottom: 1px;
+  margin-top: 1%;
+  border-color: #4361ee;
+  background-color: white;
+  border-style: solid;
+  display: flex;
+  width: 23.5%;
+  flex-direction: row;
 }
 
 div.featuresContainer {
@@ -209,7 +248,7 @@ div.featuresContainer {
   border-bottom-right-radius: 1em;
 }
 
-div.featureContainer{
+div.featureContainer {
   padding-top: 1%;
   padding-left: 2%;
   padding-right: 2%;
@@ -229,20 +268,21 @@ div.featureContainer{
   flex-direction: row;
 }
 
-div.column1Feature{
+div.column1Feature {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  height: 100%;
-}
-div.column2Feature{
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+  width: 40%;
   height: 100%;
 }
 
-div.featureLabelContainer2{
+div.column2Feature {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+}
+
+div.featureLabelContainer2 {
   width: 100%;
 }
 
@@ -251,6 +291,7 @@ label.featuresLabel {
   color: #00296b;
   float: right;
 }
+
 label.featuresLabel1 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #00296b;
@@ -348,6 +389,8 @@ div.locationsContainer {
 div.locationsListContainer {
   width: 100%;
   height: 30%;
+  overflow: hidden;
+  padding: 2%;
 }
 
 ul {
@@ -363,13 +406,255 @@ div.locationNameContainer {
   background-color: #003f88;
   border-radius: 1em;
   width: fit-content;
+  overflow: hidden;
 }
 
 h1.tittleModal {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-p,label {
+p,
+label {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #00296b;
+}
+
+@media (max-width: 800px) {
+
+  div.container {
+    width: 90%;
+    height: 100%;
+    padding-top: 2%;
+  }
+
+  div.titleContainer {
+    display: table;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 15%;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  div.titleTextContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin-bottom: 5%;
+    height: 45%;
+    float: left;
+  }
+
+  div.inputContainer {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  input.inputFilter {
+    width: 80%;
+    height: 50%;
+    font-size: small;
+  }
+
+  div.inputInnerContainer {
+    height: 100%;
+    width: 100%;
+  }
+
+  span.iconFilterContainer {
+    background-color: #4361ee;
+    width: 20%;
+    height: 90%;
+    min-height: 58px;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: #4361ee;
+  }
+
+  label.inputLabel {
+    font-size: small;
+  }
+
+  pagination-controls.pagination {
+    background-color: #4361ee;
+    border-radius: 1em;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  div.modalContainer {
+    height: 90%;
+    width: 96%;
+  }
+
+  i {
+    font-size: 30px;
+  }
+
+  i.iconFilter {
+    color: #ffd500;
+  }
+
+  i.iconOpen {
+    color: #f18805;
+  }
+
+  i.iconExp {
+    color: #f18805;
+    font-size: 20px;
+    align-self: center;
+  }
+
+  div.topContainer {
+    margin-top: 3%;
+    margin-left: 10%;
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #4361ee;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    width: fit-content;
+  }
+
+  label.cardTitle {
+    font-weight: bold;
+    color: white;
+    font-size: x-large;
+  }
+
+  div.featuresContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+    margin-left: 0%;
+    padding-top: 1%;
+    margin-top: 2%;
+    padding-bottom: 1%;
+    float: left;
+  }
+
+  div.featureContainer {
+    padding-top: 1%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    margin-bottom: 2%;
+    border-radius: 1em;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    margin-top: 1%;
+    border-color: #4361ee;
+    background-color: white;
+    border-style: solid;
+    display: flex;
+    width: 30%;
+    height: 100%;
+    flex-direction: row;
+  }
+
+  div.column1Feature {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+  }
+
+  div.column2Feature {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+  }
+
+  div.featureLabelContainer2 {
+    width: 100%;
+  }
+
+  label.featuresLabel {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #00296b;
+    float: right;
+    font-size: small;
+    margin-bottom: 5%;
+  }
+
+  label.featuresLabel1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #00296b;
+    font-weight: bold;
+    font-size: small;
+    float: right;
+  }
+
+  div.abilitiesContainer {
+    width: 100%;
+    height: 20%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-bottom: 1%;
+    border-radius: 1em;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    margin-top: 1%;
+    border-color: #003f88;
+    background-color: white;
+    border-style: solid;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    
+  }
+
+  div.abilityNameContainer {
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+    background-color: #4895ef;
+    border-radius: 1em;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-color: #003f88;
+    border-style: solid;
+  }
+
+  label.abilityTitleLabel {
+    font-weight: bold;
+    margin-left: 1%;
+    margin-top: 1%;
+    color: #00296b;
+    font-size: large;
+  }
+
+  label.abilityLabel {
+    color: white;
+    font-size: medium;
+  }
 }

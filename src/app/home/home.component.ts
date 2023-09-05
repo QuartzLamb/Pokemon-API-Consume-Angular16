@@ -16,7 +16,11 @@ interface Ability {
 
 export class HomeComponent implements OnInit {
 
-  pokemons: any = {};
+  pokemons = [
+    {
+      name: ""
+    }
+  ];
   p: number = 1;
   itemsPerPage: number = 10;
   count: number = 1;

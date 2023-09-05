@@ -19,8 +19,8 @@
         <span class="input-group-text iconFilterContainer" >
           <i class="bi bi-filter iconFilter"></i>
         </span>
-        <div class="form-floating">
-          <input type="text" class="form-control border border-primary" id="floatingInputGroup1" placeholder="Username">
+        <div class="form-floating inputInnerContainer">
+          <input type="text" class="form-control border border-primary inputFilter" id="floatingInputGroup1" placeholder="Filter">
           <label for="floatingInputGroup1" class="inputLabel">Filter by pokemon name</label>
         </div>
       </div>
@@ -39,13 +39,14 @@
           <th class="numberColumn" scope="row">{{(p - 1) * itemsPerPage + i + 1}}</th>
           <td>{{ item.name}}</td>
           <td>
-            <a href="" (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal"
-              data-bs-target="#pokemonModal">Open</a>
+            <a href="" (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal" data-bs-target="#pokemonModal">
+              <i class="bi bi-eye-fill iconOpen"></i>
+            </a>
           </td>
         </tr>
       </tbody>
     </table>
-    <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls class="pagination" [responsive]="true" (pageChange)="p = $event"></pagination-controls>
 
     <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg ">
@@ -113,7 +114,7 @@
                       <label class="featuresLabel">Height:</label>
                     </div>
                     <div class="featureLabelContainer2">
-                      <label class="featuresLabel1">{{pokemonData.height}} m</label>
+                      <label class="featuresLabel1">{{pokemonData.height}}m</label>
                     </div>
                   </div>
                 </div>
@@ -126,17 +127,17 @@
                       <label class="featuresLabel">Weight:</label>
                     </div>
                     <div class="featureLabelContainer2">
-                      <label class="featuresLabel1">{{pokemonData.weight}} kg</label>
+                      <label class="featuresLabel1">{{pokemonData.weight}}kg</label>
                     </div>
                   </div>
                 </div>
-                <div class="featureContainer">
+                <div class="featureContainerExp">
                   <div class="column1Feature">
                     <i class="bi bi-lightbulb-fill iconExp iconExp"></i>
                   </div>
                   <div class="column2Feature">
                     <div class="featureLabelContainer2">
-                      <label class="featuresLabel">Experience:</label>
+                      <label class="featuresLabel">Exp:</label>
                     </div>
                     <div class="featureLabelContainer2">
                       <label class="featuresLabel1">{{pokemonData.base_experience}}</label>
@@ -150,7 +151,7 @@
               <label class="abilityTitleLabel">Abilities</label>
               <div class="abilitiesContainer">
                 <div class="abilityNameContainer" *ngFor="let item of pokemonAbilities">
-                  <label class="abilityLabel">{{item.ability.name}} </label>
+                  <label class="abilityLabel">{{item.ability.name}}</label>
                 </div>
               </div>
               <label class="abilityTitleLabel">Locations</label>
