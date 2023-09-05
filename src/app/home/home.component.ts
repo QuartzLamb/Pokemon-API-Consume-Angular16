@@ -1,18 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
-import { MatTableModule } from '@angular/material/table';
-
-interface Ability {
-  name: string;
-}
+import { SortPipe } from '../sort.pipe';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-
-
 
 export class HomeComponent implements OnInit {
 
@@ -24,7 +18,9 @@ export class HomeComponent implements OnInit {
   p: number = 1;
   itemsPerPage: number = 10;
   count: number = 1;
-  
+
+  pokemonName: any;
+
   sprites: {
     back_default: string,
     back_female: string,
@@ -35,59 +31,80 @@ export class HomeComponent implements OnInit {
     front_shiny: string,
     front_shiny_female: string,
   } = {
-    back_default: "",
-    back_female: "",
-    back_shiny: "",
-    back_shiny_female: "",
-    front_default: "",
-    front_female: "",
-    front_shiny: "",
-    front_shiny_female: "",
-  };
+      back_default: "",
+      back_female: "",
+      back_shiny: "",
+      back_shiny_female: "",
+      front_default: "",
+      front_female: "",
+      front_shiny: "",
+      front_shiny_female: "",
+    };
 
-  pokemonData: { 
+  pokemonData: {
     name: string,
     base_experience: number,
     height: number,
     id: number,
     location_area_encounters: string,
     weight: string
-   } = { 
-    name: '',
-    base_experience: 0,
-    height: 0,
-    id: -1,
-    location_area_encounters: "",
-    weight: ","
-   };
+  } = {
+      name: '',
+      base_experience: 0,
+      height: 0,
+      id: -1,
+      location_area_encounters: "",
+      weight: ","
+    };
 
-   pokemonAbilities = [
+  pokemonAbilities = [
     {
       ability: {
         name: ""
       }
     }
-   ];
+  ];
 
-   pokemonLocationAreaEncounters = [
+  pokemonLocationAreaEncounters = [
     {
       location_area: {
         name: ""
       }
     }
-   ];
+  ];
 
-  constructor(private apiService: ApiService) {}
+  sortPipe: any;
+
+  sortBy = "name";
+
+  sortDirection = '';
+
+  constructor(private apiService: ApiService) {
+    this.sortPipe = new SortPipe();
+  }
 
   //Función que se ejecuta al renderizar la página
   ngOnInit(): void {
     this.getAllPokemons();
   }
 
-  sortByName(event: any){
-    console.log("ordenando")
+  sortDirectionAsc() {
+    this.sortDirection = 'asc';
   }
 
+  sortDirectionDesc() {
+    this.sortDirection = 'desc';
+  }
+
+  filterByName() {
+    console.log(this.pokemonName)
+    if (this.pokemonName != "") {
+      this.pokemons.filter(res => {
+        console.log(res);
+        return res.name.toLocaleLowerCase().match(this.pokemonName.toLocaleLowerCase());
+      })
+    }
+  }
 
   getAllPokemons() {
     this.apiService.getData().subscribe(data => {
@@ -95,7 +112,6 @@ export class HomeComponent implements OnInit {
       console.log(data);
     })
   }
-  
 
   showPokemon(event: any, pokemonName: string) {
     console.log(event.target.id);

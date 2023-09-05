@@ -13,14 +13,16 @@
   <div class="container">
     <div class="titleContainer">
       <div class="titleTextContainer">
-        <img class="titleImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png">
+        <img class="titleImage"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png">
       </div>
       <div class="input-group inputContainer">
-        <span class="input-group-text iconFilterContainer" >
+        <span class="input-group-text iconFilterContainer">
           <i class="bi bi-filter iconFilter"></i>
         </span>
         <div class="form-floating inputInnerContainer">
-          <input type="text" class="form-control border border-primary inputFilter" id="floatingInputGroup1" placeholder="Filter">
+          <input type="text" class="form-control border border-primary inputFilter" [(ngModel)]="pokemonName"
+            id="floatingInputGroup1" placeholder="Filter">
           <label for="floatingInputGroup1" class="inputLabel">Filter by pokemon name</label>
         </div>
       </div>
@@ -29,17 +31,28 @@
       <thead>
         <tr class="text-center">
           <th scope="col" class="leftBorderHead">#</th>
-          <th scope="col" class="centerHead" sortable="name" (sort)="sortByName($event)">Pokemon name</th>
+          <th scope="col" class="centerHead" sortable="name">
+            <div class="centerHeadInnerContainer">
+              <label class="labelCenterHeaderTable">Pokemon name</label>
+              <div class="nameHeaderContainer">
+                <a type="button" (click)="sortDirectionAsc()" class="buttonSort"><i
+                    class="bi bi-chevron-up iconSort"></i></a>
+                <a type="button" (click)="sortDirectionDesc()" class="buttonSort"><i
+                    class="bi bi-chevron-down iconSort"></i></a>
+              </div>
+            </div>
+          </th>
           <th scope="col" class="rightBorderHead">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr class="clickable text-center"
-          *ngFor="let i = index; let item of pokemons | paginate: { itemsPerPage: itemsPerPage, currentPage: p}">
+          *ngFor="let i = index; let item of pokemons | filter: pokemonName | sort:[sortDirection] | paginate: { itemsPerPage: itemsPerPage, currentPage: p}">
           <th class="numberColumn" scope="row">{{(p - 1) * itemsPerPage + i + 1}}</th>
           <td>{{ item.name}}</td>
           <td>
-            <a href="" (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal" data-bs-target="#pokemonModal">
+            <a href="" (click)="showPokemon($event, item.name)" id={{item.name}} data-bs-toggle="modal"
+              data-bs-target="#pokemonModal">
               <i class="bi bi-eye-fill iconOpen"></i>
             </a>
           </td>
@@ -47,15 +60,20 @@
       </tbody>
     </table>
     <pagination-controls class="pagination" [responsive]="true" (pageChange)="p = $event"></pagination-controls>
-
     <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg ">
         <div class="modal-content modalContainer">
           <div class="modal-body ">
             <button type="button" class="btn-close closeModalButton" data-bs-dismiss="modal"
               aria-label="Close"></button>
-            <div class="topContainer">
-              <label class="cardTitle">{{pokemonData.name}}</label>
+            <div class="topMainContainer">
+              <div class="topContainer">
+                <label class="cardTitle">{{pokemonData.name}}</label>
+              </div>
+              <div class="imageTopContainer">
+                <img class="imageTop"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png">
+              </div>
             </div>
             <div class="upperContainerModal">
               <div id="carouselExampleIndicators" class="carousel carousel-dark slide">

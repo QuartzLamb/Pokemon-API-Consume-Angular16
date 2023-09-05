@@ -46,8 +46,6 @@ div.inputContainer {
   float: right;
 }
 
-
-
 div.inputInnerContainer {
   border-color: #00296b;
 }
@@ -106,8 +104,35 @@ th.leftBorderHead {
   border-bottom-left-radius: 1em;
 }
 
+label.labelCenterHeaderTable{
+  color: white;
+}
+
 th.centerHead {
   width: 50%;
+}
+
+div.centerHeadInnerContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+div.nameHeaderContainer{
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+}
+
+button.buttonSort{
+  width: min-content;
+  height: fit-content;
+}
+
+i.iconSort{
+  font-size: 15px;
+  color: white;
 }
 
 th.rightBorderHead {
@@ -148,13 +173,34 @@ div.modalContainer {
   background-color: #e3e3e3;
 }
 
+div.imageTopContainer{
+  width: 80%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 5%;
+  margin-top: 3%;
+}
+
+img.imageTop {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+}
+
 button.closeModalButton {
   float: right;
 }
 
+div.topMainContainer{
+  display: flex;
+  flex-direction: row;
+}
+
 div.topContainer {
   margin-left: 7%;
-  margin-top: 3%;
   display: flex;
   padding-left: 2%;
   padding-right: 2%;
@@ -162,6 +208,8 @@ div.topContainer {
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
   width: fit-content;
+  height: fit-content;
+  align-self: flex-end;
 }
 
 label.cardTitle {
@@ -517,6 +565,23 @@ label {
     color: #f18805;
     font-size: 20px;
     align-self: center;
+  }
+
+  div.imageTopContainer{
+    width: 80%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 5%;
+    margin-top: 3%;
+  }
+  
+  img.imageTop {
+    width: 80%;
+    height: 100%;
+    object-fit: contain;
   }
 
   div.topContainer {

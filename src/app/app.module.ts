@@ -4,18 +4,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import {MatTableModule} from '@angular/material/table';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
+import { SortPipe } from './sort.pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxPaginationModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
