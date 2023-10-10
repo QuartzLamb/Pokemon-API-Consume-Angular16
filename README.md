@@ -1,4 +1,4 @@
-# ClikmaTest
+# Consume Pokemon API (free) with Angular 16
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
